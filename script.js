@@ -21,3 +21,21 @@ fetch("https://fakerapi.it/api/v1/credit_cards?_quantity=3")
             document.body.append(tag);
         })
     })
+
+const form = document.forms[0];
+const bc = document.querySelector("dream-bc");
+
+const formHandler = e => {
+    let el = e.target;
+    bc.setAttribute(el.name, el.value);
+}
+
+for (let i = 0; i < form.elements.length; i++) {
+    const el = form.elements[i];
+    el.value = bc.getAttribute(el.name);
+    switch (el.localName) {
+        case "input": el.addEventListener("input", formHandler); break;
+        case "select": el.addEventListener("change", formHandler); break;
+    }
+}
+

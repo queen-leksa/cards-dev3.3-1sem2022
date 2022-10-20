@@ -20,9 +20,28 @@
         dream-bc {
             background-color: #deaab4;
         }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
     </style>
 </head>
 <body>
+    <form>
+        <input type="text" name="user">
+        <input type="text" name="prof">
+        <input type="email" name="mail">
+        <input type="tel" name="tel">
+        <select name="logo">
+            <option value="github">ГитХаб</option>
+            <option value="discord">Дискорд</option>
+            <option value="microsoft">Майкрософт</option>
+            <option value="yandex">Яндекс</option>
+            <option value="wikipedia-w">Википедия</option>
+            <option value="react">Реакт</option>
+        </select>
+    </form>
     <dream-bc user="Vasya" prof="Developer" tel="+7(123)456-78-90" mail="vasya@mail.ru" logo="yandex"></dream-bc>
     <script src="script.js" type="module"></script>
 </body>
