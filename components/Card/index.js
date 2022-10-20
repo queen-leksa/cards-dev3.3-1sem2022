@@ -9,6 +9,26 @@ export default class Card extends HTMLElement {
             expire: this.expire
         }
         this.innerHTML = Template.render(this.data);
+        const nameTag = this.querySelector(".dream-card__user");
+        nameTag.addEventListener("click", function(e) {
+            // console.log(this);
+            // console.log(e.target);
+            if (!this.firstElementChild) {
+                let content = this.innerText;
+                let inp = document.createElement("input");
+                inp.type = "text";
+                inp.value = content;
+                this.innerHTML = "";
+                this.append(inp);
+                inp.focus();
+                // this.innerHTML = `<input type="text" value="${content}">`;
+                inp.addEventListener("blur", event => {
+                    // console.log(this);
+                    // console.log(event.target);
+                    this.innerText = event.target.value;
+                }, {once: true})
+            }
+        })
     }
     get type() {
         let t = this.getAttribute("type");
@@ -39,11 +59,4 @@ export default class Card extends HTMLElement {
     get expire() {
         return this.getAttribute("expire")
     }
-    /* *
-    * MasterCard
-    * Visa
-    * Discover Card
-    * Visa Retired
-    * American Express
-    * */
 }
