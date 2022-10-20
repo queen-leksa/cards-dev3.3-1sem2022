@@ -1,6 +1,20 @@
 import Template from "./template.js";
 
 export default class BC extends HTMLElement {
+    static get observedAttributes() {
+        return ["logo", "mail", "user", "tel", "prof"]
+    }
+    attributeChangedCallback(name, prev, val) {
+        if (prev !== val) {
+            this.innerHTML = Template.render({
+                logo: this.logo,
+                mail: this.mail,
+                user: this.user,
+                tel: this.tel,
+                prof: this.prof
+            });
+        }
+    }
     connectedCallback() {
         this.data = {
             logo: this.logo,
